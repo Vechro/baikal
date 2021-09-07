@@ -2,10 +2,10 @@ use std::str::FromStr;
 
 use clap::ArgEnum;
 
-use crate::prelude::Error;
+use crate::error::Error;
 
 #[allow(non_camel_case_types)]
-#[derive(ArgEnum, Debug, PartialEq)]
+#[derive(ArgEnum, Debug)]
 #[clap(rename_all = "verbatim")]
 pub enum BinaryPrefix {
     B,

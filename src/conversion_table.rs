@@ -204,13 +204,14 @@ impl ConversionTable {
 
 impl std::fmt::Display for ConversionTable {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        writeln!(f, "=> {:>16} B", self.b)?;
-        writeln!(f, "            IEC standard (base-2)")?;
+        use colored::Colorize;
+        writeln!(f, "≡ {:>16} B", self.b)?;
+        writeln!(f, "    {}", "IEC standard (base-2)".bold())?;
         writeln!(f, "≈ {:>16} KiB", self.kib)?;
         writeln!(f, "≈ {:>16} MiB", self.mib)?;
         writeln!(f, "≈ {:>16} GiB", self.gib)?;
         writeln!(f, "≈ {:>16} TiB", self.tib)?;
-        writeln!(f, "            SI standard (base-10)")?;
+        writeln!(f, "    {}", "SI standard (base-10)".bold())?;
         writeln!(f, "≈ {:>16} kB", self.kb)?;
         writeln!(f, "≈ {:>16} MB", self.mb)?;
         writeln!(f, "≈ {:>16} GB", self.gb)?;

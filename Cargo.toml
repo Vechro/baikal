@@ -1,3 +1,5 @@
+cargo-features = ["strip"]
+
 [package]
 name = "baikal"
 version = "0.1.0"
@@ -6,11 +8,19 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-clap = "3.0.0-beta.4"
-colored = "2.0.0"
-kalk = { version = "2.1.1", default-features = false }
-regex = "1.5.4"
-thiserror = "1.0.29"
+clap = { version = "3.0.0-beta.4", features = [
+  "std",
+  "derive",
+], default-features = false }
+colored = "2.0"
+fasteval = { version = "0.2", features = ["nightly"], default-features = false }
+regex = { version = "1.5", features = [
+  "std",
+  "perf-dfa",
+  "unicode-case",
+  "unicode-perl",
+], default-features = false }
+thiserror = "1.0"
 
 [lib]
 name = "baikal"
@@ -19,3 +29,10 @@ path = "src/lib.rs"
 [[bin]]
 name = "baikal"
 path = "src/bin/main.rs"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "z"
+panic = "abort"
+strip = "symbols"

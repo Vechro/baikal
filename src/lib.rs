@@ -2,11 +2,7 @@
 
 pub mod binary_prefix;
 pub mod conversion_table;
-mod error;
-
-pub mod prelude {
-    pub use crate::error::Error;
-}
+pub mod error;
 
 #[cfg(test)]
 mod tests {
