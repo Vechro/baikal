@@ -17,6 +17,8 @@ fasteval = { version = "0.2", features = ["nightly"], default-features = false }
 regex = { version = "1.5", features = [
   "std",
   "unicode-case",
+  "perf-dfa",
+  "perf-inline",
 ], default-features = false }
 thiserror = "1.0"
 
