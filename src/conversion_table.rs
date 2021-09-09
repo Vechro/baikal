@@ -1,13 +1,11 @@
 use std::lazy::SyncLazy;
 
-use regex::{Captures, Regex, RegexBuilder};
+use regex::{Captures, Regex};
 
 use crate::binary_prefix::BinaryPrefix;
 
 static BINARY_RE: SyncLazy<Regex> = SyncLazy::new(|| {
-    RegexBuilder::new("(?P<amt>[0-9]+)[\\r\\n\\t\\f\\v ]*(?P<unit>b|kib|mib|gib|tib|kb|mb|gb|tb)")
-        .case_insensitive(true)
-        .build()
+    Regex::new("(?P<amt>[0-9]+)[\\r\\n\\t\\f\\v ]*(?i)(?P<unit>b|kib|mib|gib|tib|kb|mb|gb|tb)")
         .unwrap()
 });
 
