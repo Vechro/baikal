@@ -13,6 +13,7 @@ clap = { version = "3.0.0-beta.4", features = [
   "derive",
 ], default-features = false }
 colored = "2.0"
+either = "1.6.1"
 fasteval = { version = "0.2", features = ["nightly"], default-features = false }
 regex = { version = "1.5", features = [
   "std",
@@ -40,6 +41,6 @@ harness = false
 [profile.release]
 codegen-units = 1
 lto = true
-opt-level = "z"
+opt-level = 3
 panic = "abort"
 strip = "symbols"

@@ -5,7 +5,7 @@ use clap::ArgEnum;
 use crate::error::Error;
 
 #[allow(non_camel_case_types)]
-#[derive(ArgEnum, Debug)]
+#[derive(ArgEnum, Debug, PartialEq, Eq)]
 #[clap(rename_all = "verbatim")]
 pub enum BinaryPrefix {
     B,

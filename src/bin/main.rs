@@ -1,7 +1,6 @@
 use std::env;
 
-use baikal::conversion_table::ConversionTable;
-use baikal::error::Error;
+use baikal::{binary_prefix::BinaryPrefix, conversion_table::ConversionTable, error::Error};
 use clap::Clap;
 
 #[derive(Clap, Debug)]
@@ -25,11 +24,19 @@ fn main() {
         .map_err(crate::Error::CalculationError)
         .unwrap();
 
-    let table = ConversionTable::from_bytes(result as u128);
+    let table = ConversionTable::from_bytes(result as u128, BinaryPrefix::B);
 
     if opt.minimal {
         println!("{} B", table.b.to_string());
     } else {
         println!("{}", table);
     }
+}
+
+#[test]
+fn replacing() {
+    assert_eq!(
+        ConversionTable::replace_units("56 gb / 6 + 4kib * 5 -4 mb + 4 B".to_string()),
+        "56000000000 / 6 + 4096 * 5 -4000000 + 4"
+    )
 }
